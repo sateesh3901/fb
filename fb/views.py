@@ -7,7 +7,7 @@ from .models import Players
 def players(request):
     players = Players.objects.all()
     sr = PlayersSerializer(players, many = True)
-    return JsonResponse({"status":200,"players":sr.data},safe=False)
+    return JsonResponse({"players":sr.data},safe=False)
 
 def player(request,i):
     try:
@@ -16,4 +16,4 @@ def player(request,i):
         return JsonResponse({"status":"player not found or invalid player id"})
     
     sr = PlayersSerializer(player)
-    return JsonResponse({"status":200,"player":sr.data})
+    return JsonResponse({"player":sr.data})
